@@ -6,11 +6,12 @@ public class Test {
 	 
 	  public static void main(String[] args) {
 	    Query q;
+	    String prueba = "perro(maria)";
 	    q = new Query("consult('foo.pl')");
 	    System.err.println(q.hasSolution());
 	    q = new Query("perro(a)");
 	    System.err.println(q.hasSolution());
-	    q = new Query("perro(b)");
+	    q = new Query(prueba);
 	    System.err.println(q.hasSolution());
 	    q = new Query("perro(c)");
 	    System.err.println(q.hasSolution());
