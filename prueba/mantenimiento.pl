@@ -23,13 +23,17 @@ nivelIntensidad(bajo).
 nivelIntensidad(medio).
 nivelIntensidad(alto).
 
-%:- dynamic doctor/3.
+:- dynamic doctor/3.
 
-%doctor(N,A,C):- area(A).
+doctor(andres,emergencias,3).
+doctor(roberto,wayner,3).
+doctor(noob,wayner,3.
+doctor(dios,emergencias,3).
+doctor(goku,mierda,3).
 
-%:- dynamic paciente/7.
 
-%paciente(ID,N,E,G,T,P,NI):- nivelIntensidad(NI), padecimiento(P,X).
+:- dynamic paciente/7.
+paciente(1,kenneth,19,masculino,898989,dolor_de_cabeza,alta).
 
 
 

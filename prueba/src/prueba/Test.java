@@ -15,7 +15,16 @@ public class Test {
 	    System.out.println(consult.getAreas());
 	    System.out.println(consult.getPadecimientos());
 	    System.out.println(consult.getPadecimientosArea("emergencias"));
-	    System.out.println(consult.getAreaPadecimiento("gonorrea1"));
+	    System.out.println(consult.getAreaPadecimiento("gonorreaaa1"));
+	    System.out.println(consult.getDoctores());
+	    System.out.println(consult.isDoctor("jimenez"));
+	    System.out.println(consult.getAreaDoctor("jimeneee"));
+	    System.out.println(consult.getCantidadDoctor("andres"));
+	    System.out.println(consult.getDoctoresArea("emergencias"));
+	    System.out.println(consult.isPaciente("andres"));
+	    System.out.println(consult.getDatosPaciente("1"));
+	    
+	    
 	   }
 	    
 	  }
