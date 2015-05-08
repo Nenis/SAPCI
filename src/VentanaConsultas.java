@@ -564,6 +564,9 @@ public class VentanaConsultas extends javax.swing.JDialog {
         fecha.setVisible(false);
         labelFecha.setVisible(false);
         
+        padecimiento.removeAllItems();
+        areaTrabajo.removeAllItems();
+        
         ArrayList<String> listaPadecimientos = new ArrayList<>();
         listaPadecimientos = consult.getPadecimientos();
         
@@ -628,6 +631,10 @@ public class VentanaConsultas extends javax.swing.JDialog {
         areaTrabajo.setVisible(true);
         labelCatidadPacientes.setVisible(true);
         cantidad.setVisible(true);
+
+        doctor.removeAllItems();
+        areaTrabajo.removeAllItems();
+        cantidad.removeAllItems();
         
         ArrayList<String> listDoctor = new ArrayList<>();
         listDoctor = consult.getDoctores();
@@ -704,6 +711,14 @@ public class VentanaConsultas extends javax.swing.JDialog {
         labelIntensidad.setVisible(true);
         intensidad.setVisible(true);
         
+        
+        nombre.removeAllItems();
+        identificacion.removeAllItems();
+        edad.removeAllItems();
+        genero.removeAllItems();
+        telefono.removeAllItems();
+        padecimientoPaciente.removeAllItems();
+        
         ArrayList<String> listaIdentificaciones = new ArrayList<String>();
         listaIdentificaciones = consult.getIdentificacion();
         
@@ -754,6 +769,10 @@ public class VentanaConsultas extends javax.swing.JDialog {
         areaTrabajo.setVisible(false);
         labelCatidadPacientes.setVisible(false);
         cantidad.setVisible(false);
+        doctor.removeAllItems();
+        identificacion.removeAllItems();
+        fecha.removeAllItems();
+        
         
         ArrayList<String> listaDoctores = new ArrayList<>();
         listaDoctores = consult.getDoctores();

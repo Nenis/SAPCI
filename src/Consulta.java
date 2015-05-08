@@ -28,13 +28,15 @@ public class Consulta {
             Query q;
 		
             q = new Query ("padecimiento(X,_)");
-            ArrayList<String> arregloPadecimientos = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String padecimientoEncontrado = t.toString();
-			arregloPadecimientos.add(padecimientoEncontrado);
+                Hashtable[] solutions = q.allSolutions();
+                
+                ArrayList<String> arregloPadecimientos = new ArrayList<String>();	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloPadecimientos.add(t.toString());
+		
 		}
+		
 		
 		return arregloPadecimientos;
         }
@@ -45,13 +47,14 @@ public class Consulta {
 		Query q;
 		
 		q = new Query ("padecimiento(X," + area + ")");
-		ArrayList<String> arregloPadecimientos = new ArrayList<String>();
+                Hashtable[] solutions = q.allSolutions();
+                
+                ArrayList<String> arregloPadecimientos = new ArrayList<String>();	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloPadecimientos.add(t.toString());
 		
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String padecimientoEncontrado = t.toString();
-			arregloPadecimientos.add(padecimientoEncontrado);
+		
 		}
 		
 		return arregloPadecimientos;
@@ -60,14 +63,16 @@ public class Consulta {
 	// Retorna el area de un padecimiento
 	public ArrayList<String> getAreas(){
             Query q;
-            q = new Query ("area(X)");
-            ArrayList<String> arregloAreas = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloAreas.add(areaEncontrada);
+		q = new Query ("area(X)");
+                Hashtable[] solutions = q.allSolutions();
+                
+                ArrayList<String> arregloAreas = new ArrayList<String>();	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloAreas.add(t.toString());
+		
 		}
+		
 		
 		return arregloAreas;
         }
@@ -100,11 +105,10 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloDoc = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloDoc.add(areaEncontrada);
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloDoc.add(t.toString());
+		
 		}
 		
 		return arregloDoc;
@@ -119,11 +123,12 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloCant = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloCant.add(areaEncontrada);
+	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloCant.add(t.toString());
+		
+		
 		}
 		
 		return arregloCant;
@@ -344,7 +349,10 @@ public class Consulta {
                             niv = solution[i].get("Todos").toString();
                         }
                         q = new Query("cita("+id+",_,X)");
-                        fecha = q.getSolution().toString();
+                        Term t = (Term)q.oneSolution().get("X");
+                        
+                        fecha = t.toString();
+                        System.out.println(fecha);
 
                         fila[0] = id;
                         fila[1] = name;
@@ -368,11 +376,11 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloIdentificacion = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloIdentificacion.add(areaEncontrada);
+
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloIdentificacion.add(t.toString());
+
 		}
 		
 		return arregloIdentificacion;
@@ -384,16 +392,17 @@ public class Consulta {
 		Query q;
 		q = new Query ("paciente(_,X,_,_,_,_,_)");
                 Hashtable[] solutions = q.allSolutions();
+
                 
-                ArrayList<String> arregloIdentificacion = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloIdentificacion.add(areaEncontrada);
+                ArrayList<String> arregloNombre = new ArrayList<String>();	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloNombre.add(t.toString());
+		
 		}
 		
-		return arregloIdentificacion;
+		
+		return arregloNombre;
 	}
         
 
@@ -405,11 +414,11 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloIdentificacion = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloIdentificacion.add(areaEncontrada);
+		
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloIdentificacion.add(t.toString());
+		
 		}
 		
 		return arregloIdentificacion;
@@ -471,11 +480,11 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloIdentificacion = new ArrayList<String>();	
-		while (q.hasMoreSolutions()){
-			Hashtable solution = q.nextSolution();
-			Term t = (Term) solution.get("X");
-			String areaEncontrada = t.toString();
-			arregloIdentificacion.add(areaEncontrada);
+		
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloIdentificacion.add(t.toString());
+		
 		}
 		
 		return arregloIdentificacion;

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class VentanaMantenimiento extends javax.swing.JDialog {
          Consulta consult = new Consulta();
+         Insercion insert = new Insercion();
     /**
      * Creates new form Mantenimiento
      */
@@ -265,29 +265,35 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
 
     private void btnAgregarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAreaActionPerformed
 
-        if (consult.isArea(area.getText())){
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+        System.out.println(area);
+        if ("".equals(area.getText())){
+            JOptionPane.showMessageDialog(this, "Ingrese un dato");
+        }
+        String newArea = area.getText().toLowerCase();
+        if (consult.isArea(newArea)){
+            JOptionPane.showMessageDialog(this, "El area ya existe");
         }
         else{
-            JOptionPane.showMessageDialog(this, "Area de " + area.getText() + ", agregada correctamente");
+            JOptionPane.showMessageDialog(this, "Area de " + newArea + ", agregada correctamente");
+            if((insert.setArea(newArea)));
+                    
         }
         area.setText(null);
     }//GEN-LAST:event_btnAgregarAreaActionPerformed
 
     private void btnAgregarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoActionPerformed
-        if ("".equals(padecimiento.getText())|| "".equals(areaPadecimiento.getText()))
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+        String newPadecimiento= padecimiento.getText().toLowerCase();
+
         
-        else{
-          System.out.println(areaPadecimiento.getText());
-          if(consult.isArea(areaPadecimiento.getText())){
+        if ("".equals(newPadecimiento))
+            JOptionPane.showMessageDialog(this, "Ingrese un dato");
+        if(consult.isPadecimiento(newPadecimiento))
+            JOptionPane.showMessageDialog(this, "El padecimiento ya existe");
+        if((insert.setPadecimiento(newPadecimiento,areaPadecimiento.getText()))){
             JOptionPane.showMessageDialog(this, " Padecimiento agregado correctamente");
           }
-        
-        else{
-          JOptionPane.showMessageDialog(this, "Datos incorrectos");
-        }
-       }   
+
+          
         padecimiento.setText(null);
         areaPadecimiento.setText(null);
         
