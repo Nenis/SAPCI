@@ -156,21 +156,13 @@ public class Consulta {
 	}
 	
 	// Retorna la cantidad de personas que atiende un doctor
-	public ArrayList<String> getCantidadDoctor(String nom){
+	public String getCantidadDoctor(String nom){
 		Query q;
 		q = new Query("doctor("+nom+",_,X)");
-                Hashtable[] solutions = q.allSolutions();
-                
-                ArrayList<String> arregloCant = new ArrayList<String>();	
-	
-		for(int i = 0; i< solutions.length; i++){
-                    Term t = (Term)solutions[i].get("X");
-                    arregloCant.add(t.toString());
-		
-		
-		}
-		
-		return arregloCant;
+                Hashtable solution=q.oneSolution();
+                Term t= (Term)solution.get("X");
+		String can= t.toString();
+		return can;
 
 	}
         
@@ -179,7 +171,7 @@ public class Consulta {
 		Query q;
 		q = new Query("cita(X,"+nom+","+fecha+")");
                 Hashtable[] solutions = q.allSolutions();
-                
+               System.out.println(solutions.toString());
                 ArrayList<String> arregloCant = new ArrayList<String>();	
 	
 		for(int i = 0; i< solutions.length; i++){
@@ -188,7 +180,7 @@ public class Consulta {
 		
 		
 		}
-		
+		System.out.println(nom+fecha);
 		return arregloCant;
 
 	}

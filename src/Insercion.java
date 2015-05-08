@@ -112,24 +112,36 @@ public class Insercion {
                  //int CanA=0;
                  for(int i=0;i>-1;i++){
                      
+                      
                      for(int x=0;x<docs.size();x++){
                         
-                        ArrayList<String> cantidadC=consult.getCantidadDoctor(docs.get(x));
-                        cant = (java.lang.Integer.parseInt(cantidadC.get(0)));
+                        String cantidadC=consult.getCantidadDoctor(docs.get(x));
+                        System.out.println(docs);
+                        //System.out.println(cantidadC.get
+                        cant = (java.lang.Integer.parseInt(cantidadC));
+                        System.out.println(cant);
                         ArrayList<String> cantidadA= consult.getCitasDoc(docs.get(x),Ft.toString());
+                        System.out.println(cantidadA.size());
                         if(cantidadA.size()<cant){
                             docA=docs.get(x);
+                            //i=-1;
                            break; 
                         }
+                        
                                                
                      }//cierre for docs
                      if(docA!=" "){
-                         java.sql.Date FechaD= fdate.sumarFechasDias(Ft,i);
+                         //java.sql.Date FechaD= fdate.sumarFechasDias(Ft,i);
+                         java.sql.Date FechaD=Ft;
                          setCita(id,docA,FechaD);
                          return "Fecha: "+FechaD.toString()+" Doctor: "+docA+"";
                          
                         
                         }//cierre if
+                     else{
+                     Ft=fdate.sumarFechasDias(Ft,i);
+                     }
+                    
                  }// cierre for dias
                  
                     return "Error";
