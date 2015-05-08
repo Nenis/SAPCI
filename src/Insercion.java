@@ -13,7 +13,7 @@ public class Insercion {
     
 
 	//agregar paciente
-	public boolean setPaciente(int id,String nombre,int edad, String genero,String tel,String padecimiento,String nivel){
+	public boolean setPaciente(String id,String nombre,String edad, String genero,String tel,String padecimiento,String nivel){
 		Query q;
 		q=new Query("assert(paciente("+id+","+nombre+","+edad+","+genero+","+tel+","+padecimiento+","+nivel+"))");
 		System.err.println(q.hasSolution());

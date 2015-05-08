@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
  * @author silvia
  */
 public class VentanaAsignacionCita extends javax.swing.JDialog {
+     Consulta consult = new Consulta();
+         Insercion insert = new Insercion();
+         Fecha fdate= new Fecha();
 
     /**
      * Creates new form VentanaAsignacionCita
@@ -182,13 +185,40 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAsignarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCitaActionPerformed
-              if ("".equals(identificacion.getText()) || "".equals(nombre.getText())
+        java.sql.Date fechaTentativa= fdate.getFecha2();
+        String id= (String)identificacion.getText();
+        String nom=nombre.getText().toLowerCase();
+        String edadv= (String)edad.getValue();
+        String gen= (String)genero.getSelectedItem();
+        String tel= (String)telefono.getText();
+        String pade=padecimiento.getText().toLowerCase();
+        String ni=(String)nivelIntencidad.getSelectedItem();
+        
+        if ("".equals(identificacion.getText()) || "".equals(nombre.getText())
                   || "".equals(telefono.getText()) ||  "".equals(padecimiento.getText())){
             JOptionPane.showMessageDialog(this, "Datos incorrectos");
         }
+              if(consult.isPaciente(id)){
+            JOptionPane.showMessageDialog(this, "El paciente ya existe");
+              }
+            
         else{
+                     if(consult.isPadecimiento(pade)){
+                         if((insert.setPaciente(id,nom,edadv,gen,tel,pade,ni))); 
+                         JOptionPane.showMessageDialog(this, "Paciente ingresado satisfactoriamente");
             JOptionPane.showMessageDialog(this, " La fecha de su cita es: "+"\n" + "Doctor asignado: " );
+          
+                    }
+                     else{
+                           JOptionPane.showMessageDialog(this, "El padecimiento no existe");
+                     }
+              
         }
+              identificacion.setText(null);
+              nombre.setText(null);
+              telefono.setText(null);
+              padecimiento.setText(null);
+              
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
 
     /**

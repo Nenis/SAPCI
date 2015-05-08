@@ -116,7 +116,7 @@ public class Consulta {
 		
 	}
         
-        // Obtiene el area de un doctor
+        // Obtiene el area de un doctor de un area especifica
 	public ArrayList<String> getDoctoresArea(String area){
 		Query q;
 		

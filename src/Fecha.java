@@ -18,13 +18,13 @@ import java.util.GregorianCalendar;
 public class Fecha {
     //Metodo usado para obtener la fecha actual
     //@return Retorna un <b>STRING</b> con la fecha actual formato "dd-MM-yyyy"
-    public static String getFechaActual() {
+    public  String getFechaActual() {
         Date ahora = new Date();
         SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
         return formateador.format(ahora);
     }
 
-    public static java.sql.Date getFecha2() {
+    public java.sql.Date getFecha2() {
         Date ahora = new Date();
         //SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
         java.sql.Date date2 = new java.sql.Date(ahora.getTime());
@@ -37,7 +37,7 @@ public class Fecha {
     //@param fch La fecha para sumarle los dias
     //@param dias Numero de dias a agregar
     //@return La fecha agregando los dias
-    public static java.sql.Date sumarFechasDias(java.sql.Date fch, int dias) {
+    public java.sql.Date sumarFechasDias(java.sql.Date fch, int dias) {
         Calendar cal = new GregorianCalendar();
         cal.setTimeInMillis(fch.getTime());
         cal.add(Calendar.DATE, dias);
