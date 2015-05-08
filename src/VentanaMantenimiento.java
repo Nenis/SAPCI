@@ -71,7 +71,7 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
 
         pacientesDIa.setText("Número de pacientes por día:");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 6, 1));
 
         javax.swing.GroupLayout panelDoctLayout = new javax.swing.GroupLayout(panelDoct);
         panelDoct.setLayout(panelDoctLayout);

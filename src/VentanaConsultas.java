@@ -4,16 +4,7 @@
  * and open the template in the editor.
  */
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 import jpl.Query;
 
 /**
@@ -30,6 +21,42 @@ public class VentanaConsultas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         Tabla.setVisible(false);
+        
+        labelPadecimientos.setVisible(false);
+        padecimiento.setVisible(false);
+        labelAreaP.setVisible(false);
+        areaPadecimiento.setVisible(false);
+        fecha.setVisible(false);
+        labelFecha.setVisible(false);
+        
+        
+        labelDoctor.setVisible(false);
+        doctor.setVisible(false);
+        labelAreaTrabajo.setVisible(false);
+        areaTrabajo.setVisible(false);
+        labelCatidadPacientes.setVisible(false);
+        cantidad.setVisible(false);
+        
+        labelIdentificacion.setVisible(false);
+        identificacion.setVisible(false);
+        labelNombre.setVisible(false);
+        nombre.setVisible(false);
+        labelEdad.setVisible(false);
+        edad.setVisible(false);
+        labelGenero.setVisible(false);
+        genero.setVisible(false);
+        labelTelefono.setVisible(false);
+        telefono.setVisible(false);
+        labelPadecimientoPaciente.setVisible(false);
+        padecimientoPaciente.setVisible(false);
+        labelIntensidad.setVisible(false);
+        intensidad.setVisible(false);
+        
+        
+        
+        
+       
+  
     }
 
     /**
@@ -41,11 +68,44 @@ public class VentanaConsultas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        edad1 = new javax.swing.JComboBox();
         panelConsulta = new javax.swing.JPanel();
         consultDisponibles = new javax.swing.JLabel();
         opcionesConsulta = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        labelPadecimientos = new javax.swing.JLabel();
+        labelAreaP = new javax.swing.JLabel();
+        labelDoctor = new javax.swing.JLabel();
+        labelAreaTrabajo = new javax.swing.JLabel();
+        labelCatidadPacientes = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        labelIdentificacion = new javax.swing.JLabel();
+        labelTelefono = new javax.swing.JLabel();
+        labelEdad = new javax.swing.JLabel();
+        labelIntensidad = new javax.swing.JLabel();
+        intensidad = new javax.swing.JComboBox();
+        labelGenero = new javax.swing.JLabel();
+        labelPadecimientoPaciente = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        padecimiento = new javax.swing.JComboBox();
+        areaPadecimiento = new javax.swing.JComboBox();
+        doctor = new javax.swing.JComboBox();
+        areaTrabajo = new javax.swing.JComboBox();
+        cantidad = new javax.swing.JComboBox();
+        identificacion = new javax.swing.JComboBox();
+        nombre = new javax.swing.JComboBox();
+        edad = new javax.swing.JComboBox();
+        genero = new javax.swing.JComboBox();
+        telefono = new javax.swing.JComboBox();
+        padecimientoPaciente = new javax.swing.JComboBox();
+        labelFecha = new javax.swing.JLabel();
+        fecha = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnConsultar = new javax.swing.JButton();
+
+        edad1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "E" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -54,7 +114,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
 
         consultDisponibles.setText("Consultas disponibles: ");
 
-        opcionesConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Area", "Padecimiento", "Doctor", "Paciente" }));
+        opcionesConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Area", "Padecimiento", "Doctor", "Paciente", "Cita" }));
         opcionesConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesConsultaActionPerformed(evt);
@@ -69,7 +129,60 @@ public class VentanaConsultas extends javax.swing.JDialog {
 
             }
         ));
+        Tabla.setFocusable(false);
         jScrollPane1.setViewportView(Tabla);
+
+        labelPadecimientos.setText("Padecimiento:");
+
+        labelAreaP.setText("Area a la que pertenece:");
+
+        labelDoctor.setText("Doctor:");
+
+        labelAreaTrabajo.setText("Area de Trabajo:");
+
+        labelCatidadPacientes.setText("Cantidad de pacientes por dia");
+
+        labelNombre.setText("Nombre:");
+
+        labelIdentificacion.setText("Identificacion");
+
+        labelTelefono.setText("Telefono");
+
+        labelEdad.setText("Edad");
+
+        labelIntensidad.setText("Intensidad");
+
+        intensidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "bajo", "medio", "alto" }));
+
+        labelGenero.setText("Genero");
+
+        labelPadecimientoPaciente.setText("Padecimiento");
+
+        padecimiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Padecimientos" }));
+
+        areaPadecimiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Areas" }));
+
+        doctor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Doctores" }));
+
+        areaTrabajo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Areas" }));
+
+        cantidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cantidades" }));
+
+        identificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Identificaciones" }));
+
+        nombre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombres" }));
+
+        edad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Edades" }));
+
+        genero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Generos", "masculino", "femenino", "" }));
+
+        telefono.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Telefonos" }));
+
+        padecimientoPaciente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Padecimientos" }));
+
+        labelFecha.setText("Fecha de CIta:");
+
+        fecha.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fechas" }));
 
         javax.swing.GroupLayout panelConsultaLayout = new javax.swing.GroupLayout(panelConsulta);
         panelConsulta.setLayout(panelConsultaLayout);
@@ -84,8 +197,70 @@ public class VentanaConsultas extends javax.swing.JDialog {
                         .addComponent(opcionesConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelConsultaLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                                        .addComponent(labelPadecimientos)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(labelAreaTrabajo))
+                                    .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelFecha)
+                                        .addComponent(labelDoctor)))
+                                .addGap(18, 18, 18))
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addComponent(labelAreaP)
+                                .addGap(18, 18, 18)
+                                .addComponent(areaPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                                .addComponent(labelCatidadPacientes)
+                                .addGap(7, 7, 7)))
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(areaTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(428, 428, 428))
+            .addGroup(panelConsultaLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(labelEdad))
+                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addComponent(labelIdentificacion)
+                                .addGap(18, 18, 18)
+                                .addComponent(identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(labelGenero)
+                                        .addComponent(labelNombre))
+                                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(labelTelefono)))
+                                .addGap(38, 38, 38)
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(padecimientoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(intensidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultaLayout.createSequentialGroup()
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelIntensidad)
+                            .addComponent(labelPadecimientoPaciente))
+                        .addGap(144, 144, 144)))
+                .addGap(73, 73, 73))
         );
         panelConsultaLayout.setVerticalGroup(
             panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,26 +269,117 @@ public class VentanaConsultas extends javax.swing.JDialog {
                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(consultDisponibles)
                     .addComponent(opcionesConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelIdentificacion)
+                            .addComponent(identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelNombre)
+                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelEdad)
+                            .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelGenero)
+                            .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTelefono)
+                            .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPadecimientoPaciente)
+                            .addComponent(padecimientoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelIntensidad)
+                            .addComponent(intensidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGap(218, 218, 218)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelFecha)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelDoctor)
+                            .addComponent(doctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPadecimientos)
+                            .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAreaTrabajo)
+                            .addComponent(areaTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelAreaP)
+                                    .addComponent(areaPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelCatidadPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        jLabel1.setText("            ");
+
+        btnConsultar.setText("CONSULTAR");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addComponent(panelConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(307, 307, 307)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(panelConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(btnConsultar)
+                        .addGap(32, 32, 32))))
         );
 
         pack();
@@ -125,7 +391,45 @@ public class VentanaConsultas extends javax.swing.JDialog {
         if("Area".equals(opcion)){crearConsultaArea();}
         if("Padecimiento".equals(opcion)){crearConsultaPadecimiento();}
         if("Doctor".equals(opcion)){crearConsultaDoctor();}
+        if("Paciente".equals(opcion)){crearConsultaPaciente();}
+        if("Cita".equals(opcion)){crearConsultaCita();}
     }//GEN-LAST:event_opcionesConsultaActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+         String opcion = (String)opcionesConsulta.getSelectedItem();
+        if("Area".equals(opcion)){
+            Query q;
+            q= new Query("consult('mantenimiento.pl')");
+            System.err.println(q.hasSolution());
+            consult.getAreasInter();
+        }
+         if("Padecimiento".equals(opcion)){
+            Query q;
+            q= new Query("consult('mantenimiento.pl')");
+            System.err.println(q.hasSolution());
+            consult.getPadecimientosInter(padecimiento.getSelectedItem().toString(), areaPadecimiento.getSelectedItem().toString());
+        }
+        if("Doctor".equals(opcion)){
+            Query q;
+            q= new Query("consult('mantenimiento.pl')");
+            System.err.println(q.hasSolution());
+            consult.getDoctoresInter(doctor.getSelectedItem().toString(),areaTrabajo.getSelectedItem().toString(),cantidad.getSelectedItem().toString());
+        } 
+        if("Paciente".equals(opcion)){
+            Query q;
+            q= new Query("consult('mantenimiento.pl')");
+            System.err.println(q.hasSolution());
+            consult.getDatosPacienteInter(identificacion.getSelectedItem().toString(),nombre.getSelectedItem().toString(),edad.getSelectedItem().toString(),genero.getSelectedItem().toString(),telefono.getSelectedItem().toString(),padecimientoPaciente.getSelectedItem().toString(),intensidad.getSelectedItem().toString());
+        }
+        if("Cita".equals(opcion)){
+        Query q;
+        q = new Query("consult('mantenimiento.pl')");
+        System.err.println(q.hasSolution());
+        consult.getDatosCitaInter(identificacion.getSelectedItem().toString(),doctor.getSelectedItem().toString(),fecha.getSelectedItem().toString());
+        
+        
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
  
     
@@ -173,57 +477,337 @@ public class VentanaConsultas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTable Tabla;
+    private javax.swing.JComboBox areaPadecimiento;
+    private javax.swing.JComboBox areaTrabajo;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JComboBox cantidad;
     private javax.swing.JLabel consultDisponibles;
+    private javax.swing.JComboBox doctor;
+    private javax.swing.JComboBox edad;
+    private javax.swing.JComboBox edad1;
+    private javax.swing.JComboBox fecha;
+    private javax.swing.JComboBox genero;
+    private javax.swing.JComboBox identificacion;
+    private javax.swing.JComboBox intensidad;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelAreaP;
+    private javax.swing.JLabel labelAreaTrabajo;
+    private javax.swing.JLabel labelCatidadPacientes;
+    private javax.swing.JLabel labelDoctor;
+    private javax.swing.JLabel labelEdad;
+    private javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelGenero;
+    private javax.swing.JLabel labelIdentificacion;
+    private javax.swing.JLabel labelIntensidad;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel labelPadecimientoPaciente;
+    private javax.swing.JLabel labelPadecimientos;
+    private javax.swing.JLabel labelTelefono;
+    private javax.swing.JComboBox nombre;
     private javax.swing.JComboBox opcionesConsulta;
+    private javax.swing.JComboBox padecimiento;
+    private javax.swing.JComboBox padecimientoPaciente;
     private javax.swing.JPanel panelConsulta;
+    private javax.swing.JComboBox telefono;
     // End of variables declaration//GEN-END:variables
 
     private void crearConsultaArea() {
+        
+        
         Tabla.setVisible(true);
-        Query q;
-        q= new Query("consult('mantenimiento.pl')");
-        System.err.println(q.hasSolution());
-        consult.getAreas();
+        
+        labelPadecimientos.setVisible(false);
+        padecimiento.setVisible(false);
+        labelAreaP.setVisible(false);
+        areaPadecimiento.setVisible(false);
+        fecha.setVisible(false);
+        labelFecha.setVisible(false);
+        
+        labelDoctor.setVisible(false);
+        doctor.setVisible(false);
+        labelAreaTrabajo.setVisible(false);
+        areaTrabajo.setVisible(false);
+        labelCatidadPacientes.setVisible(false);
+        cantidad.setVisible(false);
+        
+        labelIdentificacion.setVisible(false);
+        identificacion.setVisible(false);
+        labelNombre.setVisible(false);
+        nombre.setVisible(false);
+        labelEdad.setVisible(false);
+        edad.setVisible(false);
+        labelGenero.setVisible(false);
+        genero.setVisible(false);
+        labelTelefono.setVisible(false);
+        telefono.setVisible(false);
+        labelPadecimientoPaciente.setVisible(false);
+        padecimientoPaciente.setVisible(false);
+        labelIntensidad.setVisible(false);
+        intensidad.setVisible(false);
+        
 
-      
+       
         pack();
         setLocationRelativeTo(null);
     }
     
     
     private void crearConsultaPadecimiento(){
+        
         Tabla.setVisible(true);
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Nombre Padecimiento", "Area a la que pertenece"
-            }
-        ));
+        
+        labelPadecimientos.setVisible(true);
+        padecimiento.setVisible(true);
+        fecha.setVisible(false);
+        labelFecha.setVisible(false);
+        
+        ArrayList<String> listaPadecimientos = new ArrayList<>();
+        listaPadecimientos = consult.getPadecimientos();
+        
+        for(int i = 0; i < listaPadecimientos.size(); i++){
+            padecimiento.addItem(listaPadecimientos.get(i));
+        }
+        
+        labelAreaP.setVisible(true);
+        
+        areaPadecimiento.setVisible(true);
+        ArrayList<String> listAreas = new ArrayList<String>();
+        listAreas = consult.getAreas();
+        
+        for(int i = 0; i < listAreas.size(); i++){
+            areaPadecimiento.addItem(listAreas.get(i));
+        }
+        
+        
+        
+        labelDoctor.setVisible(false);
+        doctor.setVisible(false);
+        labelAreaTrabajo.setVisible(false);
+        areaTrabajo.setVisible(false);
+        labelCatidadPacientes.setVisible(false);
+        cantidad.setVisible(false);
+        
+        labelIdentificacion.setVisible(false);
+        identificacion.setVisible(false);
+        labelNombre.setVisible(false);
+        nombre.setVisible(false);
+        labelEdad.setVisible(false);
+        edad.setVisible(false);
+        labelGenero.setVisible(false);
+        genero.setVisible(false);
+        labelTelefono.setVisible(false);
+        telefono.setVisible(false);
+        labelPadecimientoPaciente.setVisible(false);
+        padecimientoPaciente.setVisible(false);
+        labelIntensidad.setVisible(false);
+        intensidad.setVisible(false);
+       
+
         pack();
         setLocationRelativeTo(null);
     }
 
     private void crearConsultaDoctor() {
+        
         Tabla.setVisible(true);
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre del Doctor", "Area a la que pertenece", "Pacientes por día"
-            }
-        ));
+        
+        labelPadecimientos.setVisible(false);
+        padecimiento.setVisible(false);
+        labelAreaP.setVisible(false);
+        areaPadecimiento.setVisible(false);
+        fecha.setVisible(false);
+        labelFecha.setVisible(false);
+        
+        
+        labelDoctor.setVisible(true);
+        doctor.setVisible(true);
+        labelAreaTrabajo.setVisible(true);
+        areaTrabajo.setVisible(true);
+        labelCatidadPacientes.setVisible(true);
+        cantidad.setVisible(true);
+        
+        ArrayList<String> listDoctor = new ArrayList<>();
+        listDoctor = consult.getDoctores();
+        
+        for(int i = 0; i < listDoctor.size(); i++){
+            doctor.addItem(listDoctor.get(i));
+        }
+        
+        ArrayList<String> listArea = new ArrayList<String>();
+        listArea = consult.getAreas();
+        
+        for(int i = 0; i < listArea.size(); i++){
+            areaTrabajo.addItem(listArea.get(i));
+        }
+        int e = 7;
+        
+        for(int i = 1; i < e; i++){
+            cantidad.addItem(i);
+        }
+        
+        labelIdentificacion.setVisible(false);
+        identificacion.setVisible(false);
+        labelNombre.setVisible(false);
+        nombre.setVisible(false);
+        labelEdad.setVisible(false);
+        edad.setVisible(false);
+        labelGenero.setVisible(false);
+        genero.setVisible(false);
+        labelTelefono.setVisible(false);
+        telefono.setVisible(false);
+        labelPadecimientoPaciente.setVisible(false);
+        padecimientoPaciente.setVisible(false);
+        labelIntensidad.setVisible(false);
+        intensidad.setVisible(false);
+        
+
         pack();
         setLocationRelativeTo(null);
     }
     
+    
+    
+    private void crearConsultaPaciente() {
+        
+        Tabla.setVisible(true);
+        labelPadecimientos.setVisible(false);
+        padecimiento.setVisible(false);
+        labelAreaP.setVisible(false);
+        areaPadecimiento.setVisible(false);
+        
+        fecha.setVisible(false);
+        labelFecha.setVisible(false);
+        
+        
+        labelDoctor.setVisible(false);
+        doctor.setVisible(false);
+        labelAreaTrabajo.setVisible(false);
+        areaTrabajo.setVisible(false);
+        labelCatidadPacientes.setVisible(false);
+        cantidad.setVisible(false);
+        
+        labelIdentificacion.setVisible(true);
+        identificacion.setVisible(true);
+        labelNombre.setVisible(true);
+        nombre.setVisible(true);
+        labelEdad.setVisible(true);
+        edad.setVisible(true);
+        labelGenero.setVisible(true);
+        genero.setVisible(true);
+        labelTelefono.setVisible(true);
+        telefono.setVisible(true);
+        labelPadecimientoPaciente.setVisible(true);
+        padecimientoPaciente.setVisible(true);
+        labelIntensidad.setVisible(true);
+        intensidad.setVisible(true);
+        
+        ArrayList<String> listaIdentificaciones = new ArrayList<String>();
+        listaIdentificaciones = consult.getIdentificacion();
+        
+        for(int i = 0; i < listaIdentificaciones.size(); i++){
+            identificacion.addItem(listaIdentificaciones.get(i));
+        }
+        
+        ArrayList<String> listaNombres = new ArrayList<String>();
+        listaNombres = consult.getNombrePaciente();
+        
+        for(int i = 0; i < listaNombres.size(); i++){
+            nombre.addItem(listaNombres.get(i));
+        }
+        
+        int e = 101;
+        
+        for(int i = 1; i < e; i++){
+            edad.addItem(i);
+        }
+   
+        ArrayList<String> listaTelefono = new ArrayList<String>();
+        listaTelefono = consult.getTelefono();
+        
+        for(int i = 0; i < listaTelefono.size(); i++){
+            telefono.addItem(listaTelefono.get(i));
+        }    
+        
+        ArrayList<String> listaPadecimientos = new ArrayList<String>();
+        listaPadecimientos = consult.getPadecimientos();
+        
+        for(int i = 0; i < listaPadecimientos.size(); i++){
+            padecimientoPaciente.addItem(listaPadecimientos.get(i));
+        }
+        pack();
+        setLocationRelativeTo(null);
+    }
+    
+    
+    private void crearConsultaCita() {
+        
+
+        labelPadecimientos.setVisible(false);
+        padecimiento.setVisible(false);
+        labelAreaP.setVisible(false);
+        areaPadecimiento.setVisible(false);
+        
+        labelAreaTrabajo.setVisible(false);
+        areaTrabajo.setVisible(false);
+        labelCatidadPacientes.setVisible(false);
+        cantidad.setVisible(false);
+        
+        ArrayList<String> listaDoctores = new ArrayList<>();
+        listaDoctores = consult.getDoctores();
+        
+        for(int i = 0; i < listaDoctores.size(); i++){
+            doctor.addItem(listaDoctores.get(i));
+        }
+        
+        ArrayList<String> listaPac = new ArrayList<>();
+        listaPac = consult.getIdentificacion();
+        
+        for(int i = 0; i < listaPac.size(); i++){
+            identificacion.addItem(listaPac.get(i));
+        }
+        
+        ArrayList<String> listaFechas = new ArrayList<>();
+        listaFechas = consult.getFechasCita();
+        
+        for(int i = 0; i < listaFechas.size(); i++){
+            fecha.addItem(listaFechas.get(i));
+        }
+        
+        
+        labelIdentificacion.setVisible(true);
+        identificacion.setVisible(true);
+        labelEdad.setVisible(false);
+        edad.setVisible(false);
+        labelGenero.setVisible(false);
+        genero.setVisible(false);
+        labelTelefono.setVisible(false);
+        telefono.setVisible(false);
+        labelPadecimientoPaciente.setVisible(false);
+        padecimientoPaciente.setVisible(false);
+        labelIntensidad.setVisible(false);
+        intensidad.setVisible(false);
+        
+        
+        // objetos que aparecen
+        labelDoctor.setVisible(true);
+        doctor.setVisible(true);
+        
+        labelNombre.setVisible(false);
+        nombre.setVisible(false);
+        
+        Tabla.setVisible(true);
+        
+        fecha.setVisible(true);
+        labelFecha.setVisible(true);
+
+    }
+    
+    
+    
+    
 }
+
+
