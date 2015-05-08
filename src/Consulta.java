@@ -115,6 +115,26 @@ public class Consulta {
 		
 		
 	}
+        
+        // Obtiene el area de un doctor
+	public ArrayList<String> getDoctoresArea(String area){
+		Query q;
+		
+
+		q = new Query ("doctor(X,"+area+",_)");
+                Hashtable[] solutions = q.allSolutions();
+                
+                ArrayList<String> arregloDoc = new ArrayList<String>();	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloDoc.add(t.toString());
+		
+		}
+		
+		return arregloDoc;
+		
+		
+	}
 	
 	// Retorna la cantidad de personas que atiende un doctor
 	public ArrayList<String> getCantidadDoctor(){
