@@ -65,7 +65,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
 
         generoPaciente.setText("Género");
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Fenemino" }));
+        genero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "masculino", "fenemino" }));
 
         telPaciente.setText("Teléfono ");
 
@@ -75,7 +75,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
 
         nivelINtensidad.setText("Nivel de intensidad: ");
 
-        nivelIntencidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bajo", "Medio", "Alto" }));
+        nivelIntencidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "bajo", "medio", "alto" }));
 
         btnAsignarCita.setText("Asignar Cita");
         btnAsignarCita.setFocusPainted(false);
@@ -186,27 +186,33 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
 
     private void btnAsignarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCitaActionPerformed
         java.sql.Date fechaTentativa= fdate.getFecha2();
-        String id= (String)identificacion.getText();
-        String nom=nombre.getText().toLowerCase();
-        String edadv= (String)edad.getValue();
-        String gen= (String)genero.getSelectedItem();
-        String tel= (String)telefono.getText();
-        String pade=padecimiento.getText().toLowerCase();
-        String ni=(String)nivelIntencidad.getSelectedItem();
+        //java.sql.Date fecha=fdate.sumarFechasDias(fechaTentativa,0);
+        //identificacion.setText(fecha.toString());
+        String id= identificacion.getText().toString();
+        String nom=nombrePaciente.getText().toLowerCase();
+        String edadv= edad.getValue().toString();
+        String gen=genero.getSelectedItem().toString();
+        String tel= telefono.getText().toString();
+        String pade=padecimiento.getText().toLowerCase().toString();
+        String ni=nivelIntencidad.getSelectedItem().toString();
         
         if ("".equals(identificacion.getText()) || "".equals(nombre.getText())
                   || "".equals(telefono.getText()) ||  "".equals(padecimiento.getText())){
             JOptionPane.showMessageDialog(this, "Datos incorrectos");
         }
+        else{
+        
               if(consult.isPaciente(id)){
             JOptionPane.showMessageDialog(this, "El paciente ya existe");
-              }
+              } 
             
         else{
                      if(consult.isPadecimiento(pade)){
-                         if((insert.setPaciente(id,nom,edadv,gen,tel,pade,ni))); 
+                         if((insert.setPaciente(id,nom,edadv,gen,tel,pade,ni))); {
                          JOptionPane.showMessageDialog(this, "Paciente ingresado satisfactoriamente");
-            JOptionPane.showMessageDialog(this, " La fecha de su cita es: "+"\n" + "Doctor asignado: " );
+                         String msj=insert.determinarCita(fechaTentativa, id, pade, ni);
+            JOptionPane.showMessageDialog(this,msj);
+                     }
           
                     }
                      else{
@@ -214,8 +220,9 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
                      }
               
         }
+        }//cierre else grande
               identificacion.setText(null);
-              nombre.setText(null);
+              nombrePaciente.setText(null);
               telefono.setText(null);
               padecimiento.setText(null);
               

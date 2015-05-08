@@ -59,6 +59,25 @@ public class Consulta {
 		
 		return arregloPadecimientos;
 	}
+        
+        // Padecimientos de alguna area
+	public ArrayList<String> getAreaPadecimiento(String pade){
+		Query q;
+		
+		q = new Query ("padecimiento(" + pade + ",X)");
+                Hashtable[] solutions = q.allSolutions();
+                
+                ArrayList<String> arregloPadecimientos = new ArrayList<String>();	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloPadecimientos.add(t.toString());
+		
+		
+		}
+		
+		return arregloPadecimientos;
+	}
+	
 	
 	// Retorna el area de un padecimiento
 	public ArrayList<String> getAreas(){
@@ -137,9 +156,9 @@ public class Consulta {
 	}
 	
 	// Retorna la cantidad de personas que atiende un doctor
-	public ArrayList<String> getCantidadDoctor(){
+	public ArrayList<String> getCantidadDoctor(String nom){
 		Query q;
-		q = new Query("doctor(_,_,X)");
+		q = new Query("doctor("+nom+",_,X)");
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloCant = new ArrayList<String>();	
@@ -153,7 +172,26 @@ public class Consulta {
 		
 		return arregloCant;
 
-	}	
+	}
+        
+        // Retorna la cantidad de citas asignadad
+	public ArrayList<String> getCitasDoc(String nom, String fecha){
+		Query q;
+		q = new Query("cita(X,"+nom+","+fecha+")");
+                Hashtable[] solutions = q.allSolutions();
+                
+                ArrayList<String> arregloCant = new ArrayList<String>();	
+	
+		for(int i = 0; i< solutions.length; i++){
+                    Term t = (Term)solutions[i].get("X");
+                    arregloCant.add(t.toString());
+		
+		
+		}
+		
+		return arregloCant;
+
+	}
         // Existe paciente
 	public boolean isPaciente(String idPaciente){
 		Query q;
