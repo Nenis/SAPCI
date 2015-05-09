@@ -5,6 +5,14 @@ area(caridiologia).
 area(odontologia).
 area(laboratorio).
 area(medicina_general).
+area(silvia_noob).
+area(rtgbrt_tybtyb).
+area(hola_bebes).
+area(jaja).
+area(haha).
+area(noooamgasfsda).
+area(lol).
+area(omg_culo).
 
 :- dynamic padecimiento/2.
 
@@ -21,6 +29,9 @@ padecimiento(desmayo, emergencias).
 
 :- dynamic doctor/3.
 
+doctor(popop, rtgbrt_tybtyb, 1).
+doctor(popop, rtgbrt_tybtyb, 1).
+doctor(popop, rtgbrt_tybtyb, 1).
 doctor(alberto, emergencias, 4).
 doctor(alejandro, caridiologia, 1).
 doctor(roberto, caridiologia, 3).
@@ -30,6 +41,7 @@ doctor(kenneth, laboratorio, 6).
 doctor(gerardo, medicina_general, 6).
 doctor(carolina, medicina_general, 6).
 doctor(lucia, laboratorio, 6).
+doctor(popop, rtgbrt_tybtyb, 1).
 
 :- dynamic paciente/7.
 

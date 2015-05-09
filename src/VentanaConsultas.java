@@ -14,6 +14,7 @@ import jpl.*;
  */
 public class VentanaConsultas extends javax.swing.JDialog {
     Consulta consult = new Consulta();
+    ArrayList<String> listaFechas = new ArrayList<>();
     
     /**
      * Creates new form VentanaConsultas
@@ -433,7 +434,8 @@ public class VentanaConsultas extends javax.swing.JDialog {
         Query q;
         q = new Query("consult('mantenimiento.pl')");
         System.err.println(q.hasSolution());
-        consult.getDatosCitaInter(identificacion.getSelectedItem().toString(),doctor.getSelectedItem().toString(),fecha.getSelectedItem().toString());
+        String newwwFecha = listaFechas.get(fecha.getSelectedIndex());
+        consult.getDatosCitaInter(identificacion.getSelectedItem().toString(),doctor.getSelectedItem().toString(),newwwFecha.toString());
         
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
@@ -806,12 +808,26 @@ public class VentanaConsultas extends javax.swing.JDialog {
             identificacion.addItem(listaPac.get(i));
         }
         
-        ArrayList<String> listaFechas = new ArrayList<>();
+        listaFechas.clear();
+       
         listaFechas = consult.getFechasCita();
-
+         listaFechas.add(0, "Fechas");
+        System.out.println(listaFechas);
         
-        for(int i = 0; i < listaFechas.size(); i++){
-            fecha.addItem(listaFechas.get(i));
+        
+        String fechaa;
+        ArrayList<String> newListaFechas = new ArrayList<>();
+
+        for(int i = 1; i < listaFechas.size(); i++){
+            fechaa = listaFechas.get(i);
+            fechaa = fechaa.replace("-","");
+            fechaa = fechaa.replace(")","");
+            fechaa = fechaa.replace("(","");
+            newListaFechas.add(fechaa);
+        }
+        
+        for(int i = 0; i < newListaFechas.size(); i++){
+            fecha.addItem(newListaFechas.get(i));
         }
         
         

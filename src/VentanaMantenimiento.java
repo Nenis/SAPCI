@@ -282,14 +282,15 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
         }
         else{
             String newArea = area.getText().toLowerCase();
-            if (consult.isArea(newArea)){
+            String areaParse = newArea.replace(" ", "_");
+            if (consult.isArea(areaParse)){
                 JOptionPane.showMessageDialog(this, "El area ya esta registrada en el sistema");
             }
             else{
                 JOptionPane.showMessageDialog(this, "Area de " + newArea + ", agregada correctamente");
-                if((insert.setArea(newArea)));
-                areaPadecimiento.addItem(newArea);
-                areaDoctor.addItem(newArea);
+                if((insert.setArea(areaParse)));
+                areaPadecimiento.addItem(areaParse);
+                areaDoctor.addItem(areaParse);
             }
         }    
         area.setText(null);

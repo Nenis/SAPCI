@@ -530,9 +530,13 @@ public class Consulta {
                     else{
                        fe = fecha;
                     }
+                    fe = fe.replace("-","");
+                    fe = fe.replace(")","");
+                     fe = fe.replace("(","");
                     fila[0] = id;
                     fila[1] = dc;
                     fila[2] = fe;
+                    
                     modelo.addRow(fila);
                 }
             }
