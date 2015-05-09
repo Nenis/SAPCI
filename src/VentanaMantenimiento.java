@@ -20,6 +20,8 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
      
+        areaPadecimiento.removeAllItems();
+        areaDoctor.removeAllItems();
         
         ArrayList<String> listAreas = new ArrayList<String>();
         listAreas = consult.getAreas();
@@ -304,6 +306,7 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
             else{
                 JOptionPane.showMessageDialog(this, "Area de " + newArea + ", agregada correctamente");
                 if((insert.setArea(areaParse)));
+                
                 ArrayList<String> listAreas = new ArrayList<String>();
                 listAreas = consult.getAreas();
         
@@ -311,10 +314,10 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
                     areaPadecimiento.addItem(listAreas.get(i));
                     areaDoctor.addItem(listAreas.get(i));
                 }
-            }
+            } 
         }    
         area.setText(null);
-
+        
         
     }//GEN-LAST:event_btnAgregarAreaActionPerformed
 

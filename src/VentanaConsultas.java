@@ -351,6 +351,11 @@ public class VentanaConsultas extends javax.swing.JDialog {
         });
 
         home.setText("ATRÁS");
+        home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -416,7 +421,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
             Query q;
             q= new Query("consult('mantenimiento.pl')");
             System.err.println(q.hasSolution());
-            consult.getAreasInter();
+            consult.getAreas3();
         }
          if("Padecimiento".equals(opcion)){
             Query q;
@@ -446,6 +451,11 @@ public class VentanaConsultas extends javax.swing.JDialog {
         
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_homeActionPerformed
 
  
     
