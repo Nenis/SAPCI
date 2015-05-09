@@ -24,6 +24,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        padecimiento.removeAllItems();
         ArrayList<String> listaPadecimientos = new ArrayList<String>();
         listaPadecimientos = consult.getPadecimientos();
         
@@ -59,6 +60,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
         nivelIntencidad = new javax.swing.JComboBox();
         btnAsignarCita = new javax.swing.JButton();
         padecimiento = new javax.swing.JComboBox();
+        home = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAPCI - Asignacion de Citas");
@@ -175,21 +177,34 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        home.setText("Atrás");
+        home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(panelAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addComponent(panelAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(home)
+                .addContainerGap())
         );
 
         pack();
@@ -209,6 +224,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
               //identificacion.setText(fecha.toString());
               String id= identificacion.getText().toString();
               String nom=nombrePaciente.getText().toLowerCase();
+              String nombreParse = nom.replace(" ", "_");
               String edadv= edad.getValue().toString();
               String gen=genero.getSelectedItem().toString();
               String tel= telefono.getText().toString();
@@ -218,7 +234,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
             if(consult.isPaciente(id))
                 JOptionPane.showMessageDialog(this, "El paciente ya esta registrado en el sistema");
             else{
-                if((insert.setPaciente(id,nom,edadv,gen,tel,pade,ni))){
+                if((insert.setPaciente(id,nombreParse,edadv,gen,tel,pade,ni))){
                     JOptionPane.showMessageDialog(this, "Paciente ingresado satisfactoriamente");
                     String msj=insert.determinarCita(fechaTentativa, id, pade, ni);
                     JOptionPane.showMessageDialog(this,msj);
@@ -230,6 +246,10 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
               telefono.setText(null);
               
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
+
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_homeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,6 +299,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
     private javax.swing.JLabel edadPaciente;
     private javax.swing.JComboBox genero;
     private javax.swing.JLabel generoPaciente;
+    private javax.swing.JButton home;
     private javax.swing.JTextField identificacion;
     private javax.swing.JLabel idpaciente;
     private javax.swing.JLabel nivelINtensidad;

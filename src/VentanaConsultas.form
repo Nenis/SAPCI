@@ -44,8 +44,10 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="1029" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="900" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="home" min="-2" pref="117" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnConsultar" min="-2" pref="164" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
@@ -72,7 +74,10 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="44" max="32767" attributes="0"/>
-                      <Component id="btnConsultar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="home" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -551,6 +556,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="home">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ATR&#xc1;S"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

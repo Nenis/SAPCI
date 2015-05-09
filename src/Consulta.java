@@ -86,11 +86,10 @@ public class Consulta {
 		q = new Query ("area(X)");
                 Hashtable[] solutions = q.allSolutions();
                 
-                ArrayList<String> arregloAreas = new ArrayList<String>();	
+                ArrayList<String> arregloAreas = new ArrayList<String>();
 		for(int i = 0; i< solutions.length; i++){
                     Term t = (Term)solutions[i].get("X");
                     arregloAreas.add(t.toString());
-		
 		}
 		
 		

@@ -106,6 +106,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnConsultar = new javax.swing.JButton();
+        home = new javax.swing.JButton();
 
         edad1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "E" }));
 
@@ -349,6 +350,8 @@ public class VentanaConsultas extends javax.swing.JDialog {
             }
         });
 
+        home.setText("ATRÁS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -361,8 +364,10 @@ public class VentanaConsultas extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -383,7 +388,9 @@ public class VentanaConsultas extends javax.swing.JDialog {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(btnConsultar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnConsultar)
+                            .addComponent(home))
                         .addGap(32, 32, 32))))
         );
 
@@ -496,6 +503,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
     private javax.swing.JComboBox edad1;
     private javax.swing.JComboBox fecha;
     private javax.swing.JComboBox genero;
+    private javax.swing.JButton home;
     private javax.swing.JComboBox identificacion;
     private javax.swing.JComboBox intensidad;
     private javax.swing.JLabel jLabel1;
