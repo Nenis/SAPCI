@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,15 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
     public VentanaMantenimiento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        
+        ArrayList<String> listAreas = new ArrayList<String>();
+        listAreas = consult.getAreas();
+        
+        for(int i = 0; i < listAreas.size(); i++){
+            areaPadecimiento.addItem(listAreas.get(i));
+            areaDoctor.addItem(listAreas.get(i));
+        }
 
     }
 
@@ -35,10 +45,10 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         nombreDoctor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        areaDoctor = new javax.swing.JTextField();
         agregarDoc = new javax.swing.JButton();
         pacientesDIa = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        cantidad = new javax.swing.JSpinner();
+        areaDoctor = new javax.swing.JComboBox();
         panelArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         area = new javax.swing.JTextField();
@@ -47,8 +57,8 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         padecimiento = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        areaPadecimiento = new javax.swing.JTextField();
         btnAgregarPadecimiento = new javax.swing.JButton();
+        areaPadecimiento = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAPCI - Mantenimiento de Datos");
@@ -71,7 +81,7 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
 
         pacientesDIa.setText("Número de pacientes por día:");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 6, 1));
+        cantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 6, 1));
 
         javax.swing.GroupLayout panelDoctLayout = new javax.swing.GroupLayout(panelDoct);
         panelDoct.setLayout(panelDoctLayout);
@@ -79,18 +89,19 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
             panelDoctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDoctLayout.createSequentialGroup()
                 .addGroup(panelDoctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDoctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(areaDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelDoctLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(panelDoctLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(nombreDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDoctLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(panelDoctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDoctLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel4))
-                            .addGroup(panelDoctLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(nombreDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelDoctLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel6))))
+                                .addGap(12, 12, 12)
+                                .addComponent(areaDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)))
                     .addGroup(panelDoctLayout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(agregarDoc))
@@ -99,7 +110,7 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
                         .addComponent(pacientesDIa))
                     .addGroup(panelDoctLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         panelDoctLayout.setVerticalGroup(
@@ -116,7 +127,7 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addComponent(pacientesDIa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(agregarDoc)
                 .addContainerGap())
@@ -181,21 +192,22 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
             panelPadecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPadecimientoLayout.createSequentialGroup()
                 .addGroup(panelPadecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPadecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(areaPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panelPadecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPadecimientoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2))
-                            .addGroup(panelPadecimientoLayout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelPadecimientoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3))))
+                    .addGroup(panelPadecimientoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(panelPadecimientoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3))
                     .addGroup(panelPadecimientoLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(btnAgregarPadecimiento)))
+                        .addComponent(btnAgregarPadecimiento))
+                    .addGroup(panelPadecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelPadecimientoLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(areaPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPadecimientoLayout.createSequentialGroup()
+                            .addGap(46, 46, 46)
+                            .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPadecimientoLayout.setVerticalGroup(
@@ -265,50 +277,61 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
 
     private void btnAgregarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAreaActionPerformed
 
-        System.out.println(area);
         if ("".equals(area.getText())){
-            JOptionPane.showMessageDialog(this, "Ingrese un dato");
-        }
-        String newArea = area.getText().toLowerCase();
-        if (consult.isArea(newArea)){
-            JOptionPane.showMessageDialog(this, "El area ya existe");
+            JOptionPane.showMessageDialog(this, "Ingrese el nombre del area");
         }
         else{
-            JOptionPane.showMessageDialog(this, "Area de " + newArea + ", agregada correctamente");
-            if((insert.setArea(newArea)));
-                    
-        }
+            String newArea = area.getText().toLowerCase();
+            if (consult.isArea(newArea)){
+                JOptionPane.showMessageDialog(this, "El area ya esta registrada en el sistema");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Area de " + newArea + ", agregada correctamente");
+                if((insert.setArea(newArea)));
+                areaPadecimiento.addItem(newArea);
+                areaDoctor.addItem(newArea);
+            }
+        }    
         area.setText(null);
+        
+        
     }//GEN-LAST:event_btnAgregarAreaActionPerformed
 
     private void btnAgregarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoActionPerformed
-        String newPadecimiento= padecimiento.getText().toLowerCase();
-
         
-        if ("".equals(newPadecimiento))
-            JOptionPane.showMessageDialog(this, "Ingrese un dato");
-        if(consult.isPadecimiento(newPadecimiento))
-            JOptionPane.showMessageDialog(this, "El padecimiento ya existe");
-        if((insert.setPadecimiento(newPadecimiento,areaPadecimiento.getText()))){
-            JOptionPane.showMessageDialog(this, " Padecimiento agregado correctamente");
-          }
-
-          
+        if ("".equals(padecimiento.getText()) || null == areaPadecimiento.getSelectedItem()){
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+                    
+        } 
+        else{
+            String newPadecimiento= padecimiento.getText().toLowerCase();
+            if(consult.isPadecimiento(newPadecimiento))
+                JOptionPane.showMessageDialog(this, "El padecimiento ya esta registrado en el sistema");
+            else{
+                 if((insert.setPadecimiento(newPadecimiento,areaPadecimiento.getSelectedItem().toString()))){
+                    JOptionPane.showMessageDialog(this, " Padecimiento agregado correctamente");
+                } 
+            }        
+        }  
         padecimiento.setText(null);
-        areaPadecimiento.setText(null);
         
     }//GEN-LAST:event_btnAgregarPadecimientoActionPerformed
 
     private void agregarDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDocActionPerformed
-        if (consult.isDoctor(nombreDoctor.getText()) == false && consult.isArea(areaDoctor.getText())
-                && "".equals(padecimiento.getText()) == false) {
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
-        }
+        
+        if ("".equals(nombreDoctor.getText())|| null == areaPadecimiento.getSelectedItem()){
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+        } 
         else{
-            JOptionPane.showMessageDialog(this, " Doctor " + nombreDoctor.getText()+ " agregado correctamente");
-        }
-        nombreDoctor.setText(null);
-        areaDoctor.setText(null);
+            String newDoctor= nombreDoctor.getText().toLowerCase();
+            if(consult.isDoctor(newDoctor))
+               JOptionPane.showMessageDialog(this, "El doctor ya esta registrado en el sistema");
+            else{
+                if((insert.setDoctor(newDoctor,areaDoctor.getSelectedItem().toString() ,cantidad.getValue().toString()))){
+                    JOptionPane.showMessageDialog(this, " Doctor agregado correctamente");
+                }
+            }    
+        }    
     }//GEN-LAST:event_agregarDocActionPerformed
 
     /**
@@ -358,16 +381,16 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
     private javax.swing.JPanel PanelMantenimiento;
     private javax.swing.JButton agregarDoc;
     private javax.swing.JTextField area;
-    private javax.swing.JTextField areaDoctor;
-    private javax.swing.JTextField areaPadecimiento;
+    private javax.swing.JComboBox areaDoctor;
+    private javax.swing.JComboBox areaPadecimiento;
     private javax.swing.JButton btnAgregarArea;
     private javax.swing.JButton btnAgregarPadecimiento;
+    private javax.swing.JSpinner cantidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField nombreDoctor;
     private javax.swing.JLabel pacientesDIa;
     private javax.swing.JTextField padecimiento;

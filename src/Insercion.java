@@ -130,7 +130,7 @@ public class Insercion {
                         
                                                
                      }//cierre for docs
-                     if(docA!=" "){
+                     if(!" ".equals(docA)){
                          //java.sql.Date FechaD= fdate.sumarFechasDias(Ft,i);
                          java.sql.Date FechaD=Ft;
                          setCita(id,docA,FechaD);

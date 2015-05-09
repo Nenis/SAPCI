@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,13 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
     public VentanaAsignacionCita(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        ArrayList<String> listaPadecimientos = new ArrayList<String>();
+        listaPadecimientos = consult.getPadecimientos();
+        
+        for(int i = 0; i < listaPadecimientos.size(); i++){
+            padecimiento.addItem(listaPadecimientos.get(i));
+        }
     }
     
    
@@ -46,11 +54,11 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
         telPaciente = new javax.swing.JLabel();
         telefono = new javax.swing.JTextField();
         edad = new javax.swing.JSpinner();
-        padecimiento = new javax.swing.JTextField();
         padecimientoPaciente = new javax.swing.JLabel();
         nivelINtensidad = new javax.swing.JLabel();
         nivelIntencidad = new javax.swing.JComboBox();
         btnAsignarCita = new javax.swing.JButton();
+        padecimiento = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SAPCI - Asignacion de Citas");
@@ -113,15 +121,19 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
                                     .addComponent(telPaciente))))
                         .addGap(18, 18, 18)))
                 .addGroup(panelAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nivelIntencidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(identificacion)
-                        .addComponent(nombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36))
+                    .addGroup(panelAsignacionLayout.createSequentialGroup()
+                        .addGroup(panelAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(identificacion)
+                                .addComponent(nombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nivelIntencidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAsignacionLayout.createSequentialGroup()
+                        .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
             .addGroup(panelAsignacionLayout.createSequentialGroup()
                 .addGap(125, 125, 125)
                 .addComponent(btnAsignarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,8 +164,8 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
                     .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(panelAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(padecimientoPaciente))
+                    .addComponent(padecimientoPaciente)
+                    .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nivelINtensidad, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,46 +197,37 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAsignarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCitaActionPerformed
-        java.sql.Date fechaTentativa= fdate.getFecha2();
-        //java.sql.Date fecha=fdate.sumarFechasDias(fechaTentativa,0);
-        //identificacion.setText(fecha.toString());
-        String id= identificacion.getText().toString();
-        String nom=nombrePaciente.getText().toLowerCase();
-        String edadv= edad.getValue().toString();
-        String gen=genero.getSelectedItem().toString();
-        String tel= telefono.getText().toString();
-        String pade=padecimiento.getText().toLowerCase().toString();
-        String ni=nivelIntencidad.getSelectedItem().toString();
-        
-        if ("".equals(identificacion.getText()) || "".equals(nombre.getText())
-                  || "".equals(telefono.getText()) ||  "".equals(padecimiento.getText())){
-            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+
+        if ("".equals(identificacion.getText()) || "".equals(nombre.getText()) || "".equals(telefono.getText())|| null == padecimiento.getSelectedItem()){
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos") ;
         }
         else{
-        
-              if(consult.isPaciente(id)){
-            JOptionPane.showMessageDialog(this, "El paciente ya existe");
-              } 
-            
-        else{
-                     if(consult.isPadecimiento(pade)){
-                         if((insert.setPaciente(id,nom,edadv,gen,tel,pade,ni))); {
-                         JOptionPane.showMessageDialog(this, "Paciente ingresado satisfactoriamente");
-                         String msj=insert.determinarCita(fechaTentativa, id, pade, ni);
-            JOptionPane.showMessageDialog(this,msj);
-                     }
-          
-                    }
-                     else{
-                           JOptionPane.showMessageDialog(this, "El padecimiento no existe");
-                     }
+              java.sql.Date fechaTentativa= fdate.getFecha2();
               
+              System.out.println( "soooy yoooo" + fechaTentativa);
+              //java.sql.Date fecha=fdate.sumarFechasDias(fechaTentativa,0);
+              //identificacion.setText(fecha.toString());
+              String id= identificacion.getText().toString();
+              String nom=nombrePaciente.getText().toLowerCase();
+              String edadv= edad.getValue().toString();
+              String gen=genero.getSelectedItem().toString();
+              String tel= telefono.getText().toString();
+              String pade=padecimiento.getSelectedItem().toString();
+              String ni=nivelIntencidad.getSelectedItem().toString();
+              
+            if(consult.isPaciente(id))
+                JOptionPane.showMessageDialog(this, "El paciente ya esta registrado en el sistema");
+            else{
+                if((insert.setPaciente(id,nom,edadv,gen,tel,pade,ni))){
+                    JOptionPane.showMessageDialog(this, "Paciente ingresado satisfactoriamente");
+                    String msj=insert.determinarCita(fechaTentativa, id, pade, ni);
+                    JOptionPane.showMessageDialog(this,msj);
+                }
+            }//cierre else grande
         }
-        }//cierre else grande
               identificacion.setText(null);
               nombrePaciente.setText(null);
               telefono.setText(null);
-              padecimiento.setText(null);
               
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
 
@@ -282,7 +285,7 @@ public class VentanaAsignacionCita extends javax.swing.JDialog {
     private javax.swing.JComboBox nivelIntencidad;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombrePaciente;
-    private javax.swing.JTextField padecimiento;
+    private javax.swing.JComboBox padecimiento;
     private javax.swing.JLabel padecimientoPaciente;
     private javax.swing.JPanel panelAsignacion;
     private javax.swing.JLabel telPaciente;

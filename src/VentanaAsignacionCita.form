@@ -89,17 +89,24 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="nivelIntencidad" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="identificacion" max="32767" attributes="0"/>
-                          <Component id="nombrePaciente" min="-2" pref="253" max="-2" attributes="0"/>
-                          <Component id="genero" min="-2" pref="136" max="-2" attributes="0"/>
-                          <Component id="telefono" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
-                          <Component id="edad" min="-2" max="-2" attributes="0"/>
-                          <Component id="padecimiento" alignment="0" min="-2" pref="242" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="identificacion" max="32767" attributes="0"/>
+                                  <Component id="nombrePaciente" min="-2" pref="253" max="-2" attributes="0"/>
+                                  <Component id="genero" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="telefono" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                  <Component id="edad" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="nivelIntencidad" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="padecimiento" min="-2" pref="240" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
@@ -138,8 +145,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="padecimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="padecimientoPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="padecimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -202,8 +209,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="padecimiento">
-        </Component>
         <Component class="javax.swing.JLabel" name="padecimientoPaciente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Padecimiento:"/>
@@ -233,6 +238,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAsignarCitaActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="padecimiento">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

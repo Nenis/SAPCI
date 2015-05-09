@@ -1,4 +1,5 @@
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import jpl.*;
@@ -209,7 +210,7 @@ public class Consulta {
                     String n;
                     String a;
                     String c;
-                
+            if(solutions.length !=  0){    
                 for ( int i=0 ; i < solutions.length ; i++ ) {    
                     if(nombre == "Doctores"){
                         n = solutions[i].get("Doctores").toString();
@@ -223,8 +224,8 @@ public class Consulta {
                     else{
                         a = area;
                     }
-                    if(cantidad == "Cantidades"){
-                        c = solutions[i].get("Cantidades").toString();
+                    if(cantidad == "Pacientes"){
+                        c = solutions[i].get("Pacientes").toString();
                     }
                     else{
                         c = cantidad;
@@ -235,6 +236,10 @@ public class Consulta {
                     fila[2]= c;
                     modelo.addRow(fila);
                 }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Los datos que desea consultar no se encuentran registrados en el sistema");
+            }
                     
              
                 VentanaConsultas.Tabla.setModel(modelo);
@@ -250,11 +255,16 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 String [] Columnas = {"Areas disponibles"};
                 DefaultTableModel modelo = new DefaultTableModel(null,Columnas);
+            if(solutions.length != 0){    
 		for ( int i=0 ; i < solutions.length ; i++ ){
                     Term t = (Term)solutions[i].get("X");
                     fila[0] = t.toString();
                     modelo.addRow(fila);
 		}
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Los datos que desea consultar no se encuentran registrados en el sistema");
+            }
                 VentanaConsultas.Tabla.setModel(modelo);
 	}
 	
@@ -276,7 +286,7 @@ public class Consulta {
                     Hashtable[] solutions = q.allSolutions();
                     String n;
                     String a;
-                
+            if(solutions.length != 0){    
                 for ( int i=0 ; i < solutions.length ; i++ ) {    
                     if(nombre == "Padecimientos"){
                         n = solutions[i].get("Padecimientos").toString();
@@ -296,7 +306,10 @@ public class Consulta {
                     fila[1] = a;
                     modelo.addRow(fila);
                 }
-         
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Los datos que desea consultar no se encuentran registrados en el sistema");
+            }
             VentanaConsultas.Tabla.setModel(modelo);
 
 	}
@@ -348,7 +361,8 @@ public class Consulta {
   
   
                     System.out.println(solution.length);
-                    for (int i = 0; i < solution.length; i++)
+                    if (solution.length != 0){
+                        for (int i = 0; i < solution.length; i++)
                         {
                             if("Identificaciones".equals(identificacion)){
                                 id = solution[i].get("Identificaciones").toString();
@@ -359,62 +373,66 @@ public class Consulta {
                              if("Nombres".equals(nombre)){
                                     name = solution[i].get("Nombres").toString();
                             }
-                        else{
+                            else{
                             name = nombre;
-                          }
-                        if("Edades".equals(edad)){
-                         ed = solution[i].get("Edades").toString();
+                            }
+                            if("Edades".equals(edad)){
+                                ed = solution[i].get("Edades").toString();
                              }
-                         else{
-                             ed = edad;
-                         }
+                            else{
+                                ed = edad;
+                            }
                             if("Generos".equals(genero)){
-                             gen = solution[i].get("Generos").toString();
-                             }
-                         else{
-                             gen = genero;
-                             }
-                         if("Telefonos".equals(telefono)){
-                         tel = solution[i].get("Telefonos").toString();
-                         }
-                        else{
-                             tel = telefono;
-                             }
-                         if("Padecimientos".equals(padecimiento)){
-                            pad = solution[i].get("Padecimientos").toString();
-                         }
-                        else{
-                             pad = padecimiento;
+                                gen = solution[i].get("Generos").toString();
                             }
-                        if("bajo".equals(nivel)){
-                             niv = "bajo";
+                            else{
+                                gen = genero;
+                            }
+                            if("Telefonos".equals(telefono)){
+                                tel = solution[i].get("Telefonos").toString();
+                            }
+                            else{
+                                tel = telefono;
+                            }
+                            if("Padecimientos".equals(padecimiento)){
+                                pad = solution[i].get("Padecimientos").toString();
+                            }
+                            else{
+                                pad = padecimiento;
+                            }
+                            if("bajo".equals(nivel)){
+                                niv = "bajo";
                              }
-                        if("medio".equals(nivel)){
-                            niv = "medio";
+                            if("medio".equals(nivel)){
+                                niv = "medio";
                             }
-                        if("alto".equals(nivel)){
-                             niv = "alto";
+                            if("alto".equals(nivel)){
+                                niv = "alto";
                             }
-                        if("Todos".equals(nivel)){
+                            if("Todos".equals(nivel)){
                             niv = solution[i].get("Todos").toString();
-                        }
-                        q = new Query("cita("+id+",_,X)");
-                        Term t = (Term)q.oneSolution().get("X");
+                            }
+                            q = new Query("cita("+id+",_,X)");
+                            Term t = (Term)q.oneSolution().get("X");
                         
-                        fecha = t.toString();
-                        System.out.println(fecha);
+                            fecha = t.toString();
+                            System.out.println(fecha);
 
-                        fila[0] = id;
-                        fila[1] = name;
-                        fila[2] = ed;
-                        fila[3] = gen;
-                        fila[4] = tel;
-                        fila[5] = pad;
-                        fila[6] = niv;
-                        fila[7] = fecha;
+                            fila[0] = id;
+                            fila[1] = name;
+                            fila[2] = ed;
+                            fila[3] = gen;
+                            fila[4] = tel;
+                            fila[5] = pad;
+                            fila[6] = niv;
+                            fila[7] = fecha;
     
-                        modelo.addRow(fila);
-                }
+                            modelo.addRow(fila);
+                        }
+                    }    
+                    else{
+                        JOptionPane.showMessageDialog(null, "Los datos que desea consultar no se encuentran registrados en el sistema");
+                    }
                 VentanaConsultas.Tabla.setModel(modelo);
   }
         
@@ -492,6 +510,7 @@ public class Consulta {
                 String dc;
                 String fe;
                 
+            if(solutions.length != 0){    
                 for ( int i=0 ; i < solutions.length ; i++ ) {    
                     if(identificacion == "Identificaciones"){
                         id = solutions[i].get("Identificaciones").toString();
@@ -511,14 +530,15 @@ public class Consulta {
                     else{
                        fe = fecha;
                     }
-         
-      
                     fila[0] = id;
                     fila[1] = dc;
                     fila[2] = fe;
                     modelo.addRow(fila);
                 }
-         
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Los datos que desea consultar no se encuentran registrados en el sistema");
+            }
             VentanaConsultas.Tabla.setModel(modelo);
 
 	}
@@ -530,19 +550,28 @@ public class Consulta {
                 Hashtable[] solutions = q.allSolutions();
                 
                 ArrayList<String> arregloIdentificacion = new ArrayList<String>();	
-		
+
 		for(int i = 0; i< solutions.length; i++){
                     Term t = (Term)solutions[i].get("X");
-                    arregloIdentificacion.add(t.toString());
+                    
+                     ArrayList<String> lista = new ArrayList<String>();
+                     
+                    String fecha = t.toString();    
+
+                    
+                
+                    arregloIdentificacion.add(fecha.toString());
 		
 		}
 		
 		return arregloIdentificacion;
 	}
-        
- 
+            
 }
         
+        
+ 
+
 
 	
 	

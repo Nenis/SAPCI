@@ -5,7 +5,8 @@
  */
 
 import java.util.ArrayList;
-import jpl.Query;
+import javax.swing.JOptionPane;
+import jpl.*;
 
 /**
  *
@@ -114,7 +115,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
 
         consultDisponibles.setText("Consultas disponibles: ");
 
-        opcionesConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Area", "Padecimiento", "Doctor", "Paciente", "Cita" }));
+        opcionesConsulta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elija una opcion", "Area", "Padecimiento", "Doctor", "Paciente", "Cita" }));
         opcionesConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesConsultaActionPerformed(evt);
@@ -166,7 +167,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
 
         areaTrabajo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Areas" }));
 
-        cantidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cantidades" }));
+        cantidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pacientes" }));
 
         identificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Identificaciones" }));
 
@@ -203,7 +204,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
                                     .addGroup(panelConsultaLayout.createSequentialGroup()
                                         .addComponent(labelPadecimientos)
                                         .addGap(29, 29, 29)
-                                        .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(padecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(labelAreaTrabajo))
                                     .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +215,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
                                 .addComponent(labelAreaP)
                                 .addGap(18, 18, 18)
                                 .addComponent(areaPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                                 .addComponent(labelCatidadPacientes)
                                 .addGap(7, 7, 7)))
                         .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,40 +228,42 @@ public class VentanaConsultas extends javax.swing.JDialog {
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelConsultaLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(labelEdad))
-                    .addGroup(panelConsultaLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelConsultaLayout.createSequentialGroup()
-                                .addComponent(labelIdentificacion)
-                                .addGap(18, 18, 18)
-                                .addComponent(identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelConsultaLayout.createSequentialGroup()
                                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelGenero)
-                                        .addComponent(labelNombre))
+                                        .addComponent(labelNombre)
+                                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelEdad)
+                                            .addComponent(labelGenero)))
                                     .addGroup(panelConsultaLayout.createSequentialGroup()
                                         .addGap(9, 9, 9)
                                         .addComponent(labelTelefono)))
                                 .addGap(38, 38, 38)
                                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(padecimientoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(intensidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(nombre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(edad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(genero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(telefono, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(intensidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(padecimientoPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addComponent(labelIdentificacion)
+                                .addGap(18, 18, 18)
+                                .addComponent(identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelIntensidad)
                             .addComponent(labelPadecimientoPaciente))
-                        .addGap(144, 144, 144)))
-                .addGap(73, 73, 73))
+                        .addGap(217, 217, 217))))
         );
         panelConsultaLayout.setVerticalGroup(
             panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,14 +353,15 @@ public class VentanaConsultas extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addComponent(panelConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(307, 307, 307)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -397,6 +401,9 @@ public class VentanaConsultas extends javax.swing.JDialog {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
          String opcion = (String)opcionesConsulta.getSelectedItem();
+        if("Elija una opcion".equals(opcion)){
+            JOptionPane.showMessageDialog(null, "No se a elegido ninguna opcion para consultar");
+        }
         if("Area".equals(opcion)){
             Query q;
             q= new Query("consult('mantenimiento.pl')");
@@ -419,6 +426,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
             Query q;
             q= new Query("consult('mantenimiento.pl')");
             System.err.println(q.hasSolution());
+            System.out.println("soy yo"+identificacion.getSelectedItem());
             consult.getDatosPacienteInter(identificacion.getSelectedItem().toString(),nombre.getSelectedItem().toString(),edad.getSelectedItem().toString(),genero.getSelectedItem().toString(),telefono.getSelectedItem().toString(),padecimientoPaciente.getSelectedItem().toString(),intensidad.getSelectedItem().toString());
         }
         if("Cita".equals(opcion)){
@@ -426,7 +434,6 @@ public class VentanaConsultas extends javax.swing.JDialog {
         q = new Query("consult('mantenimiento.pl')");
         System.err.println(q.hasSolution());
         consult.getDatosCitaInter(identificacion.getSelectedItem().toString(),doctor.getSelectedItem().toString(),fecha.getSelectedItem().toString());
-        
         
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
@@ -565,7 +572,9 @@ public class VentanaConsultas extends javax.swing.JDialog {
         labelFecha.setVisible(false);
         
         padecimiento.removeAllItems();
-        areaTrabajo.removeAllItems();
+        padecimiento.addItem("Padecimientos");
+        areaPadecimiento.removeAllItems();
+        areaPadecimiento.addItem("Areas");
         
         ArrayList<String> listaPadecimientos = new ArrayList<>();
         listaPadecimientos = consult.getPadecimientos();
@@ -633,8 +642,11 @@ public class VentanaConsultas extends javax.swing.JDialog {
         cantidad.setVisible(true);
 
         doctor.removeAllItems();
+        doctor.addItem("Doctores");
         areaTrabajo.removeAllItems();
+        areaTrabajo.addItem("Areas");
         cantidad.removeAllItems();
+        cantidad.addItem("Pacientes");
         
         ArrayList<String> listDoctor = new ArrayList<>();
         listDoctor = consult.getDoctores();
@@ -713,11 +725,13 @@ public class VentanaConsultas extends javax.swing.JDialog {
         
         
         nombre.removeAllItems();
+        nombre.addItem("Nombres");
         identificacion.removeAllItems();
-        edad.removeAllItems();
-        genero.removeAllItems();
+        identificacion.addItem("Identificaciones");
         telefono.removeAllItems();
+        telefono.addItem("Telefonos");
         padecimientoPaciente.removeAllItems();
+        padecimientoPaciente.addItem("Padecimientos");
         
         ArrayList<String> listaIdentificaciones = new ArrayList<String>();
         listaIdentificaciones = consult.getIdentificacion();
@@ -769,9 +783,13 @@ public class VentanaConsultas extends javax.swing.JDialog {
         areaTrabajo.setVisible(false);
         labelCatidadPacientes.setVisible(false);
         cantidad.setVisible(false);
+        
         doctor.removeAllItems();
+        doctor.addItem("Doctores");
         identificacion.removeAllItems();
+        identificacion.addItem("Identificaciones");
         fecha.removeAllItems();
+        fecha.addItem("Fechas");
         
         
         ArrayList<String> listaDoctores = new ArrayList<>();
@@ -790,6 +808,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
         
         ArrayList<String> listaFechas = new ArrayList<>();
         listaFechas = consult.getFechasCita();
+
         
         for(int i = 0; i < listaFechas.size(); i++){
             fecha.addItem(listaFechas.get(i));
