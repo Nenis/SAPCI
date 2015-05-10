@@ -3,29 +3,33 @@
 area(1).
 area(2).
 area(3).
-area(4).
-area(5).
-area(6).
-area(7).
-area(8).
+area(sa).
+area(dd).
+area(dfd).
 
 :- dynamic padecimiento/2.
 
 padecimiento(a, 1).
 padecimiento(b, 2).
-padecimiento(c, 3).
-padecimiento(d, 4).
-padecimiento(e, 5).
-padecimiento(f, 6).
-padecimiento(g, 7).
-padecimiento(k, 8).
+padecimiento(c, 1).
+padecimiento(d, 3).
+padecimiento(sdsdsd, 1).
+padecimiento(erferf, 3).
+padecimiento(dfbdf, dfd).
 
 :- dynamic doctor/3.
 
+doctor(dsdsc, 2, 1).
+doctor(sdsd, 1, 1).
+doctor(lulu, 3, 1).
 
 :- dynamic paciente/7.
 
+paciente(1, 2, 1, masculino, 3, b, bajo).
+paciente(11, 22, 1, masculino, 33, erferf, bajo).
 
 :- dynamic cita/3.
 
+cita(1, dsdsc, 2015-5-23).
+cita(11, lulu, 2015-5-23).
 

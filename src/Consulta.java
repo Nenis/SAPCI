@@ -305,14 +305,14 @@ public class Consulta {
           VentanaConsultas.Tabla.setModel(modelo);
         }
 	// Padecimientos del ebais
-	public void getPadecimientosInter(String nombre, String area){
+	public ArrayList<String> getPadecimientosInter(String nombre, String area){
 		Query q;
                 q= new Query("consult('mantenimiento.pl')");
                 System.err.println(q.hasSolution());
 
                  String[] fila = new String[2];
 
-
+                 ArrayList<String> lista = new ArrayList<String>();
                 String [] Columnas = {"Padecimientos","Area del padecimiento"};
 		DefaultTableModel modelo = new DefaultTableModel(null,Columnas);
 
@@ -326,15 +326,19 @@ public class Consulta {
                 for ( int i=0 ; i < solutions.length ; i++ ) {
                     if(nombre == "Padecimientos"){
                         n = solutions[i].get("Padecimientos").toString();
+                        lista.add(n);
                     }
                     else{
                         n = nombre;
+                        lista.add(n);
                     }
                     if(area == "Areas"){
                         a = solutions[i].get("Areas").toString();
+                        lista.add(a);
                     }
                     else{
                         a = area;
+                        lista.add(a);
                     }
 
 
@@ -347,6 +351,8 @@ public class Consulta {
                 JOptionPane.showMessageDialog(null, "Los datos que desea consultar no se encuentran registrados en el sistema");
             }
             VentanaConsultas.Tabla.setModel(modelo);
+            System.out.println(lista);
+            return lista;
 
 	}
 

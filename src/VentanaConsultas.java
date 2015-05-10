@@ -54,11 +54,49 @@ public class VentanaConsultas extends javax.swing.JDialog {
         labelIntensidad.setVisible(false);
         intensidad.setVisible(false);
         
+
+        padecimiento.removeAllItems();
+        padecimiento.addItem("Padecimientos");
         
+        padecimientoPaciente.removeAllItems();
+        padecimientoPaciente.addItem("Padecimientos");
         
+        areaPadecimiento.removeAllItems();
+        areaPadecimiento.addItem("Areas");
         
-       
-  
+        areaTrabajo.removeAllItems();
+        areaTrabajo.addItem("Areas");
+        
+        doctor.removeAllItems();
+        doctor.addItem("Doctores");
+
+        cantidad.removeAllItems();
+        cantidad.addItem("Pacientes");
+        
+        ArrayList<String> listaPadecimientos = new ArrayList<>();
+        listaPadecimientos = consult.getPadecimientos();
+        
+        for(int i = 0; i < listaPadecimientos.size(); i++){
+            padecimiento.addItem(listaPadecimientos.get(i));
+            padecimientoPaciente.addItem(listaPadecimientos.get(i));
+        }
+        
+
+        ArrayList<String> listAreas = new ArrayList<String>();
+        listAreas = consult.getAreas();
+        
+        for(int i = 0; i < listAreas.size(); i++){
+            areaPadecimiento.addItem(listAreas.get(i));
+            areaTrabajo.addItem(listAreas.get(i));
+        }
+        
+        ArrayList<String> listDoctor = new ArrayList<>();
+        listDoctor = consult.getDoctores();
+        
+        for(int i = 0; i < listDoctor.size(); i++){
+            doctor.addItem(listDoctor.get(i));
+        }
+
     }
 
     /**
@@ -453,11 +491,9 @@ public class VentanaConsultas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
-
         this.dispose();
     }//GEN-LAST:event_homeActionPerformed
 
- 
     
     /**
      * @param args the command line argument
@@ -590,29 +626,9 @@ public class VentanaConsultas extends javax.swing.JDialog {
         padecimiento.setVisible(true);
         fecha.setVisible(false);
         labelFecha.setVisible(false);
-        
-        padecimiento.removeAllItems();
-        padecimiento.addItem("Padecimientos");
-        areaPadecimiento.removeAllItems();
-        areaPadecimiento.addItem("Areas");
-        
-        ArrayList<String> listaPadecimientos = new ArrayList<>();
-        listaPadecimientos = consult.getPadecimientos();
-        
-        for(int i = 0; i < listaPadecimientos.size(); i++){
-            padecimiento.addItem(listaPadecimientos.get(i));
-        }
-        
         labelAreaP.setVisible(true);
         
         areaPadecimiento.setVisible(true);
-        ArrayList<String> listAreas = new ArrayList<String>();
-        listAreas = consult.getAreas();
-        
-        for(int i = 0; i < listAreas.size(); i++){
-            areaPadecimiento.addItem(listAreas.get(i));
-        }
-        
         
         
         labelDoctor.setVisible(false);
@@ -660,27 +676,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
         areaTrabajo.setVisible(true);
         labelCatidadPacientes.setVisible(true);
         cantidad.setVisible(true);
-
-        doctor.removeAllItems();
-        doctor.addItem("Doctores");
-        areaTrabajo.removeAllItems();
-        areaTrabajo.addItem("Areas");
-        cantidad.removeAllItems();
-        cantidad.addItem("Pacientes");
         
-        ArrayList<String> listDoctor = new ArrayList<>();
-        listDoctor = consult.getDoctores();
-        
-        for(int i = 0; i < listDoctor.size(); i++){
-            doctor.addItem(listDoctor.get(i));
-        }
-        
-        ArrayList<String> listArea = new ArrayList<String>();
-        listArea = consult.getAreas();
-        
-        for(int i = 0; i < listArea.size(); i++){
-            areaTrabajo.addItem(listArea.get(i));
-        }
         int e = 7;
         
         for(int i = 1; i < e; i++){
@@ -750,8 +746,6 @@ public class VentanaConsultas extends javax.swing.JDialog {
         identificacion.addItem("Identificaciones");
         telefono.removeAllItems();
         telefono.addItem("Telefonos");
-        padecimientoPaciente.removeAllItems();
-        padecimientoPaciente.addItem("Padecimientos");
         
         ArrayList<String> listaIdentificaciones = new ArrayList<String>();
         listaIdentificaciones = consult.getIdentificacion();
@@ -780,14 +774,6 @@ public class VentanaConsultas extends javax.swing.JDialog {
             telefono.addItem(listaTelefono.get(i));
         }    
         
-        ArrayList<String> listaPadecimientos = new ArrayList<String>();
-        listaPadecimientos = consult.getPadecimientos();
-        
-        for(int i = 0; i < listaPadecimientos.size(); i++){
-            padecimientoPaciente.addItem(listaPadecimientos.get(i));
-        }
-        pack();
-        setLocationRelativeTo(null);
     }
     
     

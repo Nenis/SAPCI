@@ -20,8 +20,6 @@ public class VentanaMantenimiento extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
      
-        areaPadecimiento.removeAllItems();
-        areaDoctor.removeAllItems();
         
         ArrayList<String> listAreas = new ArrayList<String>();
         listAreas = consult.getAreas();
