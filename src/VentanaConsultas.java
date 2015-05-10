@@ -29,6 +29,7 @@ public class VentanaConsultas extends javax.swing.JDialog {
         labelAreaP.setVisible(false);
         areaPadecimiento.setVisible(false);
         fecha.setVisible(false);
+        
         labelFecha.setVisible(false);
         
         

@@ -6,6 +6,7 @@ area(3).
 area(sa).
 area(dd).
 area(dfd).
+area(kmujynhtbgrf).
 
 :- dynamic padecimiento/2.
 
@@ -22,6 +23,8 @@ padecimiento(dfbdf, dfd).
 doctor(dsdsc, 2, 1).
 doctor(sdsd, 1, 1).
 doctor(lulu, 3, 1).
+doctor(hyhyhy, dfd, 6).
+doctor(mmmmmmmmm, sa, 4).
 
 :- dynamic paciente/7.
 
